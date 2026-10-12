@@ -1,0 +1,60 @@
+﻿time,run_id,level,message
+2026-10-12 20:12:09,20261012-201209,INFO,Searching bing for: 'jakarta floood'
+2026-10-12 20:12:14,20261012-201209,INFO,Found 7 result(s)
+2026-10-12 20:12:15,20261012-201209,ERROR,"! Hack Club AI error with model 'llama-3.3-70b-versatile': 400: {""error"":""llama-3.3-70b-versatile is not a valid model ID""}"
+2026-10-12 20:12:19,20261012-201209,INFO,"AI flags: 1 green, 6 red"
+2026-10-12 20:12:19,20261012-201209,INFO,[1/7] Jakarta-Wikipedia
+2026-10-12 20:12:24,20261012-201209,WARN,"⚠ page looks like an anti-bot/redirect page, not real content"
+2026-10-12 20:12:33,20261012-201209,WARN,"⚠ stopped by user, rows so far are saved in the CSV"
+2026-10-12 20:13:13,20261012-201313,INFO,Searching bing for: 'jakarta floood'
+2026-10-12 20:13:23,20261012-201313,INFO,Found 7 result(s)
+2026-10-12 20:13:24,20261012-201313,ERROR,"! Hack Club AI error with model 'anthropic/claude-haiku-5.5:batch': 404: {""error"":{""message"":""anthropic/claude-haiku-5.5:batch cannot be used with the chat/completions endpoint (adapter AnthropicBatchAdapter)."",""code"":404},""user_id"":""user_2ZddYdR9mZCcEdllNmDnAaPSOLE""}"
+2026-10-12 20:13:24,20261012-201313,INFO,"AI flags: 0 green, 7 red"
+2026-10-12 20:13:24,20261012-201313,INFO,[1/7] Jakarta-Wikipedia
+2026-10-12 20:13:25,20261012-201313,WARN,"⚠ page looks like an anti-bot/redirect page, not real content"
+2026-10-12 20:13:25,20261012-201313,ERROR,"! Hack Club AI error with model 'anthropic/claude-haiku-5.5:batch': 404: {""error"":{""message"":""anthropic/claude-haiku-5.5:batch cannot be used with the chat/completions endpoint (adapter AnthropicBatchAdapter)."",""code"":404},""user_id"":""user_2ZddYdR9mZCcEdllNmDnAaPSOLE""}"
+2026-10-12 20:13:25,20261012-201313,INFO,"[2/7] Jakarta| Indonesia, History, Map, Population, & Facts ..."
+2026-10-12 20:13:26,20261012-201313,WARN,"⚠ page looks like an anti-bot/redirect page, not real content"
+2026-10-12 20:13:26,20261012-201313,ERROR,"! Hack Club AI error with model 'anthropic/claude-haiku-5.5:batch': 404: {""error"":{""message"":""anthropic/claude-haiku-5.5:batch cannot be used with the chat/completions endpoint (adapter AnthropicBatchAdapter)."",""code"":404},""user_id"":""user_2ZddYdR9mZCcEdllNmDnAaPSOLE""}"
+2026-10-12 20:13:26,20261012-201313,INFO,"[3/7] Top 15Things to Do in Jakarta, Indonesia -JakartaAttractions"
+2026-10-12 20:13:27,20261012-201313,WARN,"⚠ page looks like an anti-bot/redirect page, not real content"
+2026-10-12 20:13:27,20261012-201313,ERROR,"! Hack Club AI error with model 'anthropic/claude-haiku-5.5:batch': 404: {""error"":{""message"":""anthropic/claude-haiku-5.5:batch cannot be used with the chat/completions endpoint (adapter AnthropicBatchAdapter)."",""code"":404},""user_id"":""user_2ZddYdR9mZCcEdllNmDnAaPSOLE""}"
+2026-10-12 20:13:28,20261012-201313,INFO,"[4/7] A first-time guide toJakarta, Indonesia -Lonely Planet"
+2026-10-12 20:13:28,20261012-201313,WARN,"⚠ page looks like an anti-bot/redirect page, not real content"
+2026-10-12 20:13:28,20261012-201313,ERROR,"! Hack Club AI error with model 'anthropic/claude-haiku-5.5:batch': 404: {""error"":{""message"":""anthropic/claude-haiku-5.5:batch cannot be used with the chat/completions endpoint (adapter AnthropicBatchAdapter)."",""code"":404},""user_id"":""user_2ZddYdR9mZCcEdllNmDnAaPSOLE""}"
+2026-10-12 20:13:29,20261012-201313,INFO,"[5/7] JakartaTourism Guide - Things to Do, Hotels, Food & Travel Tips"
+2026-10-12 20:13:29,20261012-201313,WARN,"⚠ page looks like an anti-bot/redirect page, not real content"
+2026-10-12 20:13:30,20261012-201313,ERROR,"! Hack Club AI error with model 'anthropic/claude-haiku-5.5:batch': 404: {""error"":{""message"":""anthropic/claude-haiku-5.5:batch cannot be used with the chat/completions endpoint (adapter AnthropicBatchAdapter)."",""code"":404},""user_id"":""user_2ZddYdR9mZCcEdllNmDnAaPSOLE""}"
+2026-10-12 20:13:30,20261012-201313,INFO,[6/7] Daerah Khusus Ibukota Jakarta- Wikipedia bahasa Indonesia ...
+2026-10-12 20:13:30,20261012-201313,WARN,"⚠ page looks like an anti-bot/redirect page, not real content"
+2026-10-12 20:13:32,20261012-201313,ERROR,"! Hack Club AI error with model 'anthropic/claude-haiku-5.5:batch': 404: {""error"":{""message"":""anthropic/claude-haiku-5.5:batch cannot be used with the chat/completions endpoint (adapter AnthropicBatchAdapter)."",""code"":404},""user_id"":""user_2ZddYdR9mZCcEdllNmDnAaPSOLE""}"
+2026-10-12 20:13:33,20261012-201313,INFO,[7/7] Jakarta
+2026-10-12 20:13:33,20261012-201313,WARN,"⚠ page looks like an anti-bot/redirect page, not real content"
+2026-10-12 20:13:34,20261012-201313,ERROR,"! Hack Club AI error with model 'anthropic/claude-haiku-5.5:batch': 404: {""error"":{""message"":""anthropic/claude-haiku-5.5:batch cannot be used with the chat/completions endpoint (adapter AnthropicBatchAdapter)."",""code"":404},""user_id"":""user_2ZddYdR9mZCcEdllNmDnAaPSOLE""}"
+2026-10-12 20:13:34,20261012-201313,INFO,Building overall AI overview...
+2026-10-12 20:13:34,20261012-201313,ERROR,"! Hack Club AI error with model 'anthropic/claude-haiku-5.5:batch': 404: {""error"":{""message"":""anthropic/claude-haiku-5.5:batch cannot be used with the chat/completions endpoint (adapter AnthropicBatchAdapter)."",""code"":404},""user_id"":""user_2ZddYdR9mZCcEdllNmDnAaPSOLE""}"
+2026-10-12 20:57:22,20261012-205720,INFO,"Using models: stepfun/step-5-preview, anthropic/claude-haiku-5.5, google/gemini-nano-banana-2.1"
+2026-10-12 20:57:22,20261012-205720,INFO,Searching bing for: 'jakarta floood'
+2026-10-12 20:57:27,20261012-205720,INFO,Found 10 result(s)
+2026-10-12 20:57:33,20261012-205720,INFO,"AI flags: 0 green, 10 red"
+2026-10-12 20:57:33,20261012-205720,INFO,[1/10] Jakarta-Wikipedia
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (Generic Wikipedia city overview, not about flooding.)"
+2026-10-12 20:57:33,20261012-205720,INFO,"[2/10] Jakarta| Indonesia, History, Map, Population, & Facts | Britannica"
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (Britannica general overview of Jakarta, no flood focus.)"
+2026-10-12 20:57:33,20261012-205720,INFO,[3/10] History of Jakarta-Wikipedia
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (History of Jakarta, not about floods.)"
+2026-10-12 20:57:33,20261012-205720,INFO,"[4/10] JakartaTourism Guide - Things to Do, Hotels, Food & Travel Tips"
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (Tourism guide to Jakarta, not flood-related.)"
+2026-10-12 20:57:33,20261012-205720,INFO,"[5/10] A first-time guide toJakarta, Indonesia -Lonely Planet"
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (Lonely Planet travel guide, not about floods.)"
+2026-10-12 20:57:33,20261012-205720,INFO,[6/10] Things to Do inJakarta: The Ultimate 2026 Guide
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (Tourism “things to do” guide, not flood-related.)"
+2026-10-12 20:57:33,20261012-205720,INFO,"[7/10] Top 15Things to Do in Jakarta, Indonesia -JakartaAttractions"
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (Tripadvisor attractions list, not floods.)"
+2026-10-12 20:57:33,20261012-205720,INFO,"[8/10] Jakarta- Simple EnglishWikipedia, the free encyclopedia"
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (Simple English Wikipedia general overview, not floods.)"
+2026-10-12 20:57:33,20261012-205720,INFO,"[9/10] Where is Jakarta, Indonesia?JakartaLocation Map, Facts & Geography"
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (Location/geography page about Jakarta, not floods.)"
+2026-10-12 20:57:33,20261012-205720,INFO,"[10/10] Jakarta, Indonesia: All You Must Know Before You Go (2026) -Tripadviso"
+2026-10-12 20:57:33,20261012-205720,SKIP,"✗ skipped (Tripadvisor tourism page, not flood-related.)"
+2026-10-12 20:57:33,20261012-205720,ERROR,"! Every result was filtered out. Try a broader query, more results, or SMART_FILTER=false"
