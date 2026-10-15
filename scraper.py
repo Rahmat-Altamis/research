@@ -5,6 +5,7 @@ import sys
 import time
 from datetime import datetime
 from urllib.parse import parse_qs, unquote, urlparse
+
 import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
@@ -30,7 +31,9 @@ ENGINE = env("SEARCH_ENGINE", "bing").lower()
 MARKET = env("BING_MARKET", "en-US")
 NUM_RESULTS = int(env("NUM_RESULTS", "5"))
 MODEL = env("AI_MODEL", "llama-3.3-70b-versatile")
-MODELS = [MODEL] + [m for m in items_of("AI_MODEL_FALLBACKS", "llama-3.3-70b-versatile,meta-llama/llama-3.1-8b-instruct,mistralai/mistral-7b-instruct") if m != MODEL]
+MODELS = [MODEL] + [
+    m for m in items_of("AI_MODEL_FALLBACKS", "llama-3.3-70b-versatile,meta-llama/llama-3.1-8b-instruct,mistralai/mistral-7b-instruct") if m != MODEL
+]
 SMART_FILTER = flag("SMART_FILTER", "true")
 EXPAND = flag("QUERY_EXPANSION", "false")
 SUBQUERIES = int(env("NUM_SUBQUERIES", "6"))
@@ -42,6 +45,7 @@ DEEP_RATIO = float(env("DEEP_SCRAPE_TRIGGER_RATIO", "0.3"))
 CRAWL_URLS = items_of("CRAWL_URLS")
 CRAWL_FILE = env("CRAWL_URLS_FILE")
 EXCLUDE = [d.lower() for d in items_of("EXCLUDE_DOMAINS", "kbbi.kemdikbud.go.id,kbbi.web.id,kbbi.co.id,lirik.kapanlagi.com,liriklaguindonesia.net,youtube.com,music.youtube.com")]
+
 CHAT_URL = "https://ai.hackclub.com/proxy/v1/chat/completions"
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
 RESULT_FIELDS = ["time", "run_id", "query", "status", "tier", "matched_query", "title", "url", "snippet", "ai_summary", "page_blocked", "skip_reason"]
@@ -114,6 +118,7 @@ def parse_results(entries, n, seen):
         if len(out) >= n:
             break
     return out
+
 
 def search_bing(query, n):
     try:
@@ -198,7 +203,7 @@ def pick_models():
         resp = requests.get(CHAT_URL.replace("/chat/completions", "/models"), headers={"Authorization": f"Bearer {API_KEY}"}, timeout=20)
         ids = [m["id"] for m in resp.json()["data"]]
     except Exception as e:
-        log(f"could not list models ({e}), using configured ones")
+        log(f"⚠ could not list models ({e}), using configured ones")
         return
     usable = [i for i in ids if ":batch" not in i and not re.search("embed|whisper|image|tts|moderation", i)]
     MODELS = [m for m in MODELS if m in usable] or usable[:3]
@@ -257,7 +262,8 @@ def expand_query(query, n):
 def followup_queries(query, kept, n):
     joined = "\n\n".join(f"- {r['title']} ({r['url']}): {r['ai_summary']}" for r in kept)
     system = (
-        "You are planning a second round of web research. Given the original query and what the first sources said (including blocked or empty ones), find what is still unanswered and turn each gap into one concrete search query."
+        "You are planning a second round of web research. Given the original query and what the first sources said "
+        "(including blocked or empty ones), find what is still unanswered and turn each gap into one concrete search query. "
         f"Output exactly {n} queries, one per line, no numbering, no explanations."
     )
     return lines_of(ai(system, f"Original query: {query}\n\nFirst-round summaries:\n{joined}"), n)
@@ -269,7 +275,8 @@ def judge(query, results):
         chunk = results[start:start + 25]
         listing = "\n".join(f"{i + 1}. Title: {r['title']} | URL: {r['url']} | Snippet: {r['snippet']}" for i, r in enumerate(chunk))
         system = (
-            "Judge search-result relevance before pages are fetched. For EACH numbered result decide if it is actually ABOUT what the query looks for (a dictionary definition, unrelated forum page or generic homepage is not relevant). "
+            "Judge search-result relevance before pages are fetched. For EACH numbered result decide if it is actually ABOUT what the query "
+            "looks for (a dictionary definition, unrelated forum page or generic homepage is not relevant). "
             f"Reply with exactly {len(chunk)} lines in order, formatted '<number>: YES: <short reason>' or '<number>: NO: <short reason>'. Nothing else."
         )
         for line in ai(system, f"Search query: {query}\n\nResults:\n{listing}").splitlines():
@@ -281,7 +288,8 @@ def judge(query, results):
 
 def summarize(r, text):
     system = (
-        "You are a research assistant. Given scraped webpage text and a search query, write a concise factual summary (3-5 sentences) of how this page is relevant to the query. If the text is empty or irrelevant, say so. Do not invent facts."
+        "You are a research assistant. Given scraped webpage text and a search query, write a concise factual summary (3-5 sentences) "
+        "of how this page is relevant to the query. If the text is empty or irrelevant, say so. Do not invent facts."
     )
     user = f"Search query: {QUERY}\n\nPage title: {r['title']}\nPage URL: {r['url']}\n\nPage text:\n{text or '[no text extracted]'}"
     return ai(system, user)
@@ -290,7 +298,8 @@ def summarize(r, text):
 def overview(kept):
     joined = "\n\n".join(f"- {r['title']} ({r['url']}): {r['ai_summary']}" for r in kept)
     system = (
-        "You are a research assistant. Given per-source summaries from a web search, write a short overview (4-6 sentences) of the key findings relevant to the query. Note any disagreement between sources."
+        "You are a research assistant. Given per-source summaries from a web search, write a short overview (4-6 sentences) "
+        "of the key findings relevant to the query. Note any disagreement between sources."
     )
     return ai(system, f"Search query: {QUERY}\n\nPer-source summaries:\n{joined}")
 
@@ -312,7 +321,7 @@ def process(items, tier, smart, kept):
         r = {**r, "title": r.get("title") or title}
         junk = is_junk(text)
         if junk:
-            log(f"blocked or empty page ({len(text)} chars): {text[:100]!r}")
+            log(f"⚠ blocked or empty page ({len(text)} chars): {text[:100]!r}")
         item = {**r, "ai_summary": "(page blocked or empty)" if junk else summarize(r, text), "page_blocked": junk, "tier": tier}
         kept.append(item)
         emit({**item, "status": "kept"})
@@ -390,7 +399,7 @@ def run():
 
     log("Building overall AI overview...")
     emit({"status": "overview", "tier": "", "title": "AI overview", "ai_summary": overview(kept)})
-    print(f"\nDone. kept {len(kept)}, skipped {STATS['skipped']}\n  {os.path.join(OUT_DIR, 'results.csv')}\n  {os.path.join(OUT_DIR, 'log.csv')}")
+    print(f"\n✓ Done. kept {len(kept)}, skipped {STATS['skipped']}\n  {os.path.join(OUT_DIR, 'results.csv')}\n  {os.path.join(OUT_DIR, 'log.csv')}")
 
 
 if __name__ == "__main__":
@@ -400,7 +409,7 @@ if __name__ == "__main__":
         log(f"! {e}")
         sys.exit(1)
     except KeyboardInterrupt:
-        log("stopped by user, rows so far are saved in the CSV")
+        log("⚠ stopped by user, rows so far are saved in the CSV")
         sys.exit(130)
     finally:
         RESULTS_F.close()
